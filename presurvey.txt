@@ -1,0 +1,20 @@
+--- Who Are You? ---
+Where are you from?
+Where do you live and work now?
+Gender: M/F/Other/Prefer Not To Say
+Age: #/Prefer Not To Say
+
+--- What Do You Do? ---
+What's your educational background?
+What's your current title or discipline?
+Who do you work for?
+Do you write programs as part of your work?
+Do you automate Excel as part of your work?
+
+--- What Do You Know? ---
+Have you programmed before?
+For how long?
+In what languages?
+What languages do you know "well"?
+How large is the largest program you've ever worked on? (powers of 10 LOC)
+Write me a "hello world" program in your favorite language (or fizz buzz?)

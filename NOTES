@@ -1,0 +1,127 @@
+pre-survey: experience, role, expected outcomes
+4 sessions / 1 hour each (probably?)
+
+pre-reading material?
+
+VBA sucks, but:
+  we don't have time to cover anything else from scratch
+  also, the object model for Excel is defined in VBA...
+    ... so bitch about it the whole time and introduce Python
+    at the end
+
+the goal is that students have learned enough about VBA and programming
+  by the end that they'll hate VBA and pursue programming further
+
+but it's a secret goal
+
+-- day 1: eat your vegetables --
+a CS review for people without CS
+
+they're not macros
+they're programs
+and this will be a programming class
+sidebar: why are they called "macros", and what is the macro recorder good for? we'll address this later
+
+programming: expressing computations in a way executable by a real or abstract machine, and understandable by human readers
+it's: applied math, an engineering discipline, an art, a craft, a communications medium
+
+basic programming, extruded through a rusty VB-shaped die
+
+*** programs = data structures + algorithms ***
+so at the very lowest level we'll look at
+programs = data types + functions
+
+data types
+Option Explicit: what and why?
+primitive types
+Variant: when to use it (almost never), what it really does
+  why not use it? because types are how we assert compiler-checkable theorems
+  about our programs; the Variant theorem says "this value could be anything"
+array, record, enum, object types (punt on records, enums, and objects for now)
+other "built-in" COM object types (punt on these for now)
+
+functions
+Functions vs Subs: a dumb distinction with a dumber syntactic difference
+but we'll use it to reflect pure functions (what does this mean?) vs impure "IO routines" == Subs
+rule: Subs talk to Excel; Functions do the heavy lifiting
+  so translate Excel ranges etc. into appropriate data structures at the boundary
+  i.e. data abstraction
+arguments, parameters, return types; more on this later
+functional decomposition: the single engineering skill most important to software design
+
+another advantage: functions can be called from spreadsheet cells
+
+value and reference types
+passing by value and reference
+value by value, value by reference, reference by value, reference by reference
+what "physically" happens, what's the mental model?
+
+processing arrays safely:
+Option Base 0 (but remember Excel hates you)
+For i = LBound(arr) To UBound(arr)
+You can ForEach over an array but you shouldn't: https://support.microsoft.com/en-us/kb/129931
+  (I assume it's boxing each cell as a Variant)
+
+record types and enums:
+use records for grouping logically related data about an "entity" in the system
+  this is more data abstraction
+  remember: it needn't be a "real life" entity --- finding "sticky"
+    abstractions is a hard skill to learn but it's key to API design
+use enums in place of integers or booleans as flags, state indicators,
+  result codes, lookup keys, etc
+example: the most famous enums --- MsgBox arguments
+
+so by the end of the first day:
+  we'll build something that incorporates some functions on arrays of records
+  and wire up a very gimpy Excel interface: think button triggers read, calc,
+  write back to spreadsheet
+
+-- day 2: The Excel Object Model ---
+OK, we're going to talk about Excel more today but first...
+  what's an "object model"?
+  what does it really mean to say Application.Workbooks(1).Sheets(1).Range("A1").Value?
+  is this like that Java thing?
+one view: objects = state + behavior
+  abstraction and encapsulation // this is the "ADT" view of objects
+  it doesn't really get us anything that records + functions don't,
+    except a nicer syntax and arguably the ability to "hide" private data
+    and functions
+this is mostly the view taken by Excel, but...
+objects = open recursion / polymorphism / late binding / dynamic dispatch
+  this is the "Alan Kay" view of objects
+is this Java? not quite, we don't have inheritance, nor do we have much
+  support for enforcing invariants in constructors
+VB's been called "object-based" rather than "object-oriented"
+
+Now back to Excel!
+Lean on MSDN.
+This is the thing the macro recorder is good at: learning new parts of the
+  object model
+Really absurdly common objects: Workbook, Worksheet, Range
+
+This is probably a good point to bring up error handling: it sucks in VBA, but
+  when you're dealing with the Excel object model, you can't get away from it
+VB errors are (somewhat) similar to exceptions in other languages, except the
+  syntax around them is awful, and they're untyped (well, they're integers)
+Use VB errors only for cases that are truly "unexpected": the file wasn't there,
+  the database isn't accessible, the sun has winked out...
+Never use On Error Resume Next.
+Use the "try-catch pattern":
+> On Error GoTo HANDLE_XYZ:
+> xyz(x, y, z)
+> HANDLE_XYZ:
+> MsgBox("that didn't work too well")
+> Exit Sub
+> On Error GoTo 0
+For "reasonably plausible" conditions, use return codes (i.e. enums).
+This is a matter of taste and judgment, but in general it's better to prefer
+  return codes over errors; at least in VBA.
+Remember to always handle every case in your Select statement.
+
+By the end of the second day, we'll build a more...
+
+--- day 3: finish the Excel/VBA case study ---
+we'll need to cover events & forms
+
+--- day 4: moving beyond VBA ---
+a survey
