@@ -6,7 +6,7 @@ pre-reading material?
 VBA sucks, but:
   we don't have time to cover anything else from scratch
   also, the object model for Excel is defined in VBA...
-    ... so bitch about it the whole time and introduce Python
+    ... so complain about it the whole time and introduce Python
     at the end
 
 the goal is that students have learned enough about VBA and programming
@@ -37,8 +37,6 @@ primitive types
 Variant: when to use it (almost never), what it really does
   why not use it? because types are how we assert compiler-checkable theorems
   about our programs; the Variant theorem says "this value could be anything"
-array, record, enum, object types (punt on records, enums, and objects for now)
-other "built-in" COM object types (punt on these for now)
 
 functions
 Functions vs Subs: a dumb distinction with a dumber syntactic difference
@@ -50,6 +48,10 @@ arguments, parameters, return types; more on this later
 functional decomposition: the single engineering skill most important to software design
 
 another advantage: functions can be called from spreadsheet cells
+
+--- day 2: insert title here
+array, record, enum, object types (punt on records, enums, and objects for now)
+other "built-in" COM object types (punt on these for now)
 
 value and reference types
 passing by value and reference
@@ -71,12 +73,13 @@ use enums in place of integers or booleans as flags, state indicators,
   result codes, lookup keys, etc
 example: the most famous enums --- MsgBox arguments
 
-so by the end of the first day:
-  we'll build something that incorporates some functions on arrays of records
-  and wire up a very gimpy Excel interface: think button triggers read, calc,
-  write back to spreadsheet
+example mini-project: daily averager for e.g. hourly data
+arrays, records, Dictionary
+Excel I/O
+run-from-keyboard shortcut
+run-from-button
 
--- day 2: The Excel Object Model ---
+-- day 3: digging into objects ---
 OK, we're going to talk about Excel more today but first...
   what's an "object model"?
   what does it really mean to say Application.Workbooks(1).Sheets(1).Range("A1").Value?
@@ -118,12 +121,25 @@ This is a matter of taste and judgment, but in general it's better to prefer
   return codes over errors; at least in VBA.
 Remember to always handle every case in your Select statement.
 
-By the end of the second day, we'll build a more complex "application" against
-  Excel.
+example project: decline-curve forecaster
+loads a format of
+Well Name|Decline Type|Start Date|Params...
+and spits out a new workbook of monthly volume forecasts
+we'll use polymorphism to handle different decline types
 
---- day 3: finish the Excel/VBA case study ---
+i.e.
+Type WellRecord
+    Name As String
+    StartDate As Date
+    Decline as IDecline
+EndType
+
+HyperbolicDecline implements IDecline
+
+IDecline_MonthlyVolume(ByVal StartDate as Date, ByVal months As Long) As Double
+
+--- day 4: finish the Excel/VBA case study & moving beyond VBA ---
 Today we'll focus more on "polishing" our Excel application.
 We'll need to cover events & forms.
 
---- day 4: moving beyond VBA ---
-a survey
+also, a survey of next steps
