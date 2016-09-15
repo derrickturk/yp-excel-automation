@@ -1,7 +1,7 @@
 Option Explicit
 
-Private Const Viscosity As Double = 1.0
-Private Const Z As Double = 0.997
+Private Const Viscosity As Double = 0.015
+Private Const Z As Double = 0.89
 
 Public Function PseudoPressure(ByVal p As Double, ByVal pBase As Double) _
   As Double
