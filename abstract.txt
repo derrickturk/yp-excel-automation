@@ -1,0 +1,44 @@
+Programming For Engineers
+Featuring Excel Automation with Visual Basic for Applications
+
+In this four-day webinar series, participants will review fundamental computer
+science and programming concepts in the context of writing Visual Basic for
+Applications (VBA) "macros" to automate Microsoft Excel. We'll build simple
+automated tools for common oil & gas tasks while covering algorithms, data
+structures, program design, and debugging. Along the way we'll explore the
+Excel automation API, discuss the limitations of the Excel/VBA environment, and
+discover some topics for future self-directed learning.
+
+Session 1
+In the first one-hour session, we'll cover fundamental programming concepts in
+the context of the VBA language. Data types, functions, and basic data
+structures will be used to build simple calculations that can be used from
+Excel spreadsheets.
+
+Session 2
+In the second one-hour session, we'll discuss object-oriented programming and
+begin exploring the Excel automation API. We'll begin work on a larger "case
+study" project and use the VBA debugger to locate programming errors.
+
+Session 3
+In the third one-hour session, we'll complete the case study project started in
+the second session. We'll also discuss how to provide a graphical user
+interface for Excel automation projects using VBA's built-in tools.
+
+Session 4
+In the final session, we'll review what we've accomplished, survey selected
+additional topics, and discuss other programming languages and paradigms that
+participants may wish to learn in the future.
+
+
+About the Instructor
+Derrick W. Turk is an independent data science consultant supporting the E&P
+industry. His consulting work frequently incorporates completion optimization,
+reservoir characterization, machine learning, and custom software development.
+He is the author of the aRpsDCA open-source library for decline curve analysis
+and developer of several proprietary custom software systems for production
+forecasting, portfolio modeling, and other tasks. Prior to his consulting
+career, he worked as a reservoir engineer assisting exploration and A&D efforts
+with numerical and statistical modeling. Derrick holds a B.S. in Mechanical
+Engineering degree from the University of Texas and has been a member of SPE
+since 2010.
