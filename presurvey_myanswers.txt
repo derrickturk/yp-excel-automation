@@ -1,0 +1,29 @@
+Where are you from? [ Houston, TX ]
+Where do you live and work now? [ Houston, TX ]
+Gender: M/F/Unspecified [ M ]
+Age: #/Unspecified [ 27 ]
+
+Highest degree [ BS, University of Texas ]
+Educational field or major [ Mechanical engineering ]
+
+Current title or professional discipline [ Data science consultant ]
+Who do you work for? [ My one-man company: terminus data science, LLC ]
+Do you write programs as part of your work? [ Yes ]
+Do you automate Excel (e.g. with VBA) as part of your work? [ Yes ]
+
+Have you programmed before? [ Yes ]
+For how long? [ 18 years ]
+Languages: (limited) assembly, C, C++, C#, Excel formulas, (limited) Haskell, Java, Javascript, Lisp, MATLAB, (limited) ML, F#, or OCaml, Perl, Python, R, Visual Basic
+
+What languages do you know "well"? C, C++, C#, Javascript, Python, R, Visual Basic
+
+Largest program? [ ~20000 lines ]
+
+Hello world: 
+
+#include <stdio.h>
+
+int main(void)
+{
+    puts("hello world.");
+}
