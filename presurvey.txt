@@ -1,20 +1,83 @@
 --- Who Are You? ---
-Where are you from?
-Where do you live and work now?
-Gender: M/F/Other/Prefer Not To Say
-Age: #/Prefer Not To Say
+
+Where are you from? [ Freeform text ]
+
+Where do you live and work now? [ Freeform text ]
+
+Gender: M/F/Unspecified [ Multiple choice ]
+
+Age: #/Unspecified [ Numeric entry or multiple choice (by 5 year ranges) ]
 
 --- What Do You Do? ---
+
 What's your educational background?
-What's your current title or discipline?
-Who do you work for?
-Do you write programs as part of your work?
-Do you automate Excel as part of your work?
+    * Highest degree [ Multiple choice: High school diploma / 2-year e.g. associates' degree / 4-year e.g. bachelors' degree / Graduate e.g. masters' degree / Doctorate e.g. PhD ]
+    * Educational field or major [ Multiple choice: Petroleum engineering / Geology, geoscience, or geophysics / Computer science or information systems / Other engineering degree / Other science or math field / Other ]
+
+What's your current title or professional discipline? [ Freeform text ]
+
+Who do you work for? [ Freeform text ]
+
+Do you write programs as part of your work? [ Yes / No ]
+
+Do you automate Excel (e.g. with VBA) as part of your work? [ Yes / No ]
+
+How do you use Excel or other spreadsheets in your work? [ Checkboxes or multi-selection list ]
+    * Data storage (i.e. as an ad-hoc database)
+    * Data visualization (graphing, charting)
+    * Data manipulation (fixing bad data, joining data from multiple sources, calculating new data from old)
+    * Statistical analysis (linear regressions, statistical testing, etc.)
+    * Application platform (complex macro-enabled workflows with multiple users)
+
 
 --- What Do You Know? ---
-Have you programmed before?
-For how long?
-In what languages?
-What languages do you know "well"?
-How large is the largest program you've ever worked on? (powers of 10 LOC)
-Write me a "hello world" program in your favorite language (or fizz buzz?)
+
+Have you programmed before? [ Yes / No ]
+
+For how long? [ Numeric entry or freeform text ]
+
+In what languages? [ Checkboxes or multi-selection list ]
+    * Assembly
+    * C
+    * C++
+    * C#
+    * Excel formulas
+    * Fortran
+    * Haskell
+    * Java
+    * Javascript
+    * Lisp
+    * MATLAB
+    * ML, F#, or OCaml
+    * Objective-C
+    * Perl
+    * Python
+    * R
+    * Ruby
+    * Visual Basic
+    * Other [ Freeform text ]
+
+What languages do you know "well"? [ Checkboxes or multi-selection list ]
+    * Assembly
+    * C
+    * C++
+    * C#
+    * Excel formulas
+    * Fortran
+    * Haskell
+    * Java
+    * Javascript
+    * Lisp
+    * MATLAB
+    * ML, F#, or OCaml
+    * Objective-C
+    * Perl
+    * Python
+    * R
+    * Ruby
+    * Visual Basic
+    * Other [ Freeform text ]
+
+How large is the largest program you've ever worked on, roughly, in lines of source code? [ Multiple choice: 0 (NA) / 10 lines / 100 lines / 1000 lines / 10000 lines / 100000 lines / 1000000+ lines ]
+
+(If you'd like) write me a "hello world", "fizz buzz", or some other interesting tiny program in your favorite language: [ Freeform text, multi-line entry --- the sort of input you'd have for a short essay ]

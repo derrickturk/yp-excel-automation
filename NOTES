@@ -1,5 +1,5 @@
 pre-survey: experience, role, expected outcomes
-4 sessions / 1 hour each (probably?)
+4 sessions / 1 hour each
 
 pre-reading material?
 
@@ -118,10 +118,12 @@ This is a matter of taste and judgment, but in general it's better to prefer
   return codes over errors; at least in VBA.
 Remember to always handle every case in your Select statement.
 
-By the end of the second day, we'll build a more...
+By the end of the second day, we'll build a more complex "application" against
+  Excel.
 
 --- day 3: finish the Excel/VBA case study ---
-we'll need to cover events & forms
+Today we'll focus more on "polishing" our Excel application.
+We'll need to cover events & forms.
 
 --- day 4: moving beyond VBA ---
 a survey
