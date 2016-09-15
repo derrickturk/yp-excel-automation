@@ -143,3 +143,9 @@ Today we'll focus more on "polishing" our Excel application.
 We'll need to cover events & forms.
 
 also, a survey of next steps
+
+--- stuff that will have to slip (i.e. the ugly practical bits) ---
+dealing with the idiotisms of writing to / reading from Excel efficiently
+(column layout Variant arrays, yuck)
+DIY search and sort
+various sort-of built-in objects implementing quasi-useful data structures
