@@ -70,13 +70,21 @@ Public Sub TestHyperbolic
         forecastTime(i) = currentTime
         forecastRate(i) = Rate(decline, currentTime)
         forecastCumulative(i) = Cumulative(decline, currentTime)
-        currentTime = currentTime + 1.0 / 365.25
+        currentTime = currentTime + 1.0 / YearDays
     Next i
 
-    ActiveSheet.Range(ActiveSheet.Cells(1, 1), ActiveSheet.Cells(Days, 1)) = _
-      Application.Transpose(forecastTime)
-    ActiveSheet.Range(ActiveSheet.Cells(1, 2), ActiveSheet.Cells(Days, 2)) = _
-      Application.Transpose(forecastRate)
-    ActiveSheet.Range(ActiveSheet.Cells(1, 3), ActiveSheet.Cells(Days, 3)) = _
-      Application.Transpose(forecastCumulative)
+    ActiveSheet.Range( _
+        ActiveSheet.Cells(1, 1), _
+        ActiveSheet.Cells(Days, 1) _
+    ) = Application.Transpose(forecastTime)
+
+    ActiveSheet.Range( _
+        ActiveSheet.Cells(1, 2), _
+        ActiveSheet.Cells(Days, 2) _
+    ) = Application.Transpose(forecastRate)
+
+    ActiveSheet.Range( _
+        ActiveSheet.Cells(1, 3), _
+        ActiveSheet.Cells(Days, 3) _
+    ) = Application.Transpose(forecastCumulative)
 End Sub
