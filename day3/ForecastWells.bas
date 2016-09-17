@@ -4,16 +4,18 @@ Private Const DataBeginRow As Long = 2
 Private Const WellNameColumn As Long = 1
 Private Const BeginParamsColumn As Long = 2
 
-Private Const ForecastMonths As Long = 48
 Private Const YearMonths = 12
-
-Public Sub test()
-    ForecastDeclines Sheet1
-End Sub
 
 Public Sub ForecastDeclines(ByVal sheet As Worksheet)
     Dim lastCell As Range
     Set lastCell = LastUsedCell(sheet)
+
+    Dim forecastMonths As Long
+    ForecastSetup.Show
+    If Not ForecastSetup.OkClicked Then
+        Exit Sub
+    End If
+    forecastMonths = ForecastSetup.forecastMonths
 
     Dim prodWorkbook As Workbook
     Set prodWorkbook = Workbooks.Add()
@@ -30,7 +32,8 @@ Public Sub ForecastDeclines(ByVal sheet As Worksheet)
         wellDecline.Di = sheet.Cells(row, BeginParamsColumn + 1).Value
         wellDecline.b = sheet.Cells(row, BeginParamsColumn + 2).Value
 
-        Dim volumes(0 To ForecastMonths - 1) As Double
+        Dim volumes() As Double
+        ReDim volumes(0 To forecastMonths - 1)
         Dim elapsedTime As Double
         elapsedTime = 0
         Dim i As Long
@@ -44,7 +47,7 @@ Public Sub ForecastDeclines(ByVal sheet As Worksheet)
         Set wellSheet = prodWorkbook.Sheets.Add( _
           After := prodWorkbook.Sheets(prodWorkbook.Sheets.Count))
 
-        FormatProductionSheet wellSheet, wellName, volumes
+        FormatProductionSheet wellSheet, wellName, volumes, forecastMonths
     Next row
 
     If row < DataBeginRow Then ' we didn't have any records
@@ -73,7 +76,8 @@ Public Sub ForecastDeclines(ByVal sheet As Worksheet)
 End Sub
 
 Private Sub FormatProductionSheet(ByVal sheet As Worksheet, _
-  ByVal wellName As String, ByRef volumes() As Double)
+  ByVal wellName As String, ByRef volumes() As Double, _
+  ByVal forecastMonths As Long)
     sheet.Name = wellName
 
     sheet.Range("A1").Value = wellName
@@ -86,12 +90,12 @@ Private Sub FormatProductionSheet(ByVal sheet As Worksheet, _
 
     sheet.Range( _
         sheet.Cells(3, 1), _
-        sheet.Cells(3 + ForecastMonths - 1, 1) _
-    ).Value = Application.Transpose(Sequence(1, ForecastMonths))
+        sheet.Cells(3 + forecastMonths - 1, 1) _
+    ).Value = Application.Transpose(Sequence(1, forecastMonths))
 
     sheet.Range( _
         sheet.Cells(3, 2), _
-        sheet.Cells(3 + ForecastMonths - 1, 2) _
+        sheet.Cells(3 + forecastMonths - 1, 2) _
     ).Value = Application.Transpose(volumes)
 End Sub
 
