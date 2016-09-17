@@ -97,6 +97,28 @@ Private Sub FormatProductionSheet(ByVal sheet As Worksheet, _
         sheet.Cells(3, 2), _
         sheet.Cells(3 + forecastMonths - 1, 2) _
     ).Value = Application.Transpose(volumes)
+
+    AddRateTimeGraph sheet, forecastMonths
+End Sub
+
+Private Sub AddRateTimeGraph(ByVal sheet As Worksheet, _
+  ByVal forecastMonths As Long)
+    Dim graph As Chart
+    Set graph = sheet.Parent.Charts.Add
+    Set graph = graph.Location(Where := xlLocationAsObject, Name := sheet.Name)
+
+    graph.ChartType = xlXYScatterLinesNoMarkers
+
+    graph.SetSourceData sheet.Range( _
+        sheet.Cells(3, 1), _
+        sheet.Cells(3 + forecastMonths - 1, 2) _
+    )
+
+    graph.Axes(xlValue).ScaleType = xlScaleLogarithmic
+    graph.HasLegend = False
+
+    graph.HasTitle = True
+    graph.ChartTitle.Text = sheet.Name
 End Sub
 
 Private Function Sequence(ByVal seqFrom As Long, ByVal seqTo As Long) As Long()
