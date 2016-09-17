@@ -11,6 +11,11 @@ Public Property Get OkClicked() As Boolean
     OkClicked = okClicked_
 End Property
 
+Private Sub UserForm_Initialize()
+    numericMonths_ = 48
+    okClicked_ = False
+End Sub
+
 Private Sub txtForecastMonths_Change()
     On Error GoTo INVALID
     numericMonths_ = CLng(txtForecastMonths.Value)
