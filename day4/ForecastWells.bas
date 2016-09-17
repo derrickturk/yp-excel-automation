@@ -2,7 +2,8 @@ Option Explicit
 
 Private Const DataBeginRow As Long = 2
 Private Const WellNameColumn As Long = 1
-Private Const BeginParamsColumn As Long = 2
+Private Const DeclineTypeColumn As Long = 2
+Private Const BeginParamsColumn As Long = 3
 
 Private Const YearMonths = 12
 
@@ -27,11 +28,15 @@ Public Sub ForecastDeclines(ByVal sheet As Worksheet)
         Dim wellName As String
         wellName = sheet.Cells(row, WellNameColumn).Value
 
-        Dim wellDecline As HyperbolicDecline
-        Set wellDecline = New HyperbolicDecline
-        wellDecline.qi = sheet.Cells(row, BeginParamsColumn).Value
-        wellDecline.Di = sheet.Cells(row, BeginParamsColumn + 1).Value
-        wellDecline.b = sheet.Cells(row, BeginParamsColumn + 2).Value
+        Dim declineType As String
+        Dim p1 As Double, p2 As Double, p3 As Double
+        declineType = sheet.Cells(row, DeclineTypeColumn.Value)
+        p1 = sheet.Cells(row, BeginParamsColumn).Value
+        p2 = sheet.Cells(row, BeginParamsColumn + 1).Value
+        p3 = sheet.Cells(row, BeginParamsColumn + 2).Value
+
+        Dim wellDecline As IDecline
+        Set wellDecline = CreateDecline(declineType, p1, p2, p3)
 
         Dim volumes() As Double
         ReDim volumes(0 To forecastMonths - 1)
