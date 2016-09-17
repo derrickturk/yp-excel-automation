@@ -28,7 +28,7 @@ Public Sub ForecastDeclines(ByVal sheet As Worksheet)
         Dim wellDecline As HyperbolicDecline
         wellDecline.qi = sheet.Cells(row, BeginParamsColumn).Value
         wellDecline.Di = sheet.Cells(row, BeginParamsColumn + 1).Value
-        wellDecline.b = sheet.Cells(row, BeginParamsColumn).Value
+        wellDecline.b = sheet.Cells(row, BeginParamsColumn + 2).Value
 
         Dim volumes(0 To ForecastMonths - 1) As Double
         Dim elapsedTime As Double
@@ -45,8 +45,6 @@ Public Sub ForecastDeclines(ByVal sheet As Worksheet)
           After := prodWorkbook.Sheets(prodWorkbook.Sheets.Count))
 
         FormatProductionSheet wellSheet, wellName, volumes
-
-        Debug.Print wellName, volumes(UBound(volumes))
     Next row
 
     If row < DataBeginRow Then ' we didn't have any records
