@@ -140,8 +140,6 @@ def monthly_forecast(decline, months):
     return (volume(decline, t / 12, (t + 1) / 12) for t in range(months))
 
 def add_well_sheet(wb, name, fc):
-    print(wb.Sheets.Count)
-    print(wb.Sheets(wb.Sheets.Count).Name)
     sheet = wb.Sheets.Add(After=wb.Sheets(wb.Sheets.Count))
     sheet.Name = name
 
@@ -165,6 +163,25 @@ def add_well_sheet(wb, name, fc):
         sheet.Cells(3, 2),
         sheet.Cells(3 + months - 1, 2)
     ).Value = [[vol] for vol in fc]
+
+    add_graph(sheet, months)
+
+def add_graph(sheet, months):
+    graph = sheet.Parent.Charts.Add().Location(Where=C.xlLocationAsObject,
+            Name=sheet.Name)
+
+    graph.ChartType = C.xlXYScatterLinesNoMarkers
+
+    graph.SetSourceData(sheet.Range(
+        sheet.Cells(3, 1),
+        sheet.Cells(3 + months - 1, 2)
+    ))
+
+    graph.Axes(C.xlValue).ScaleType = C.xlScaleLogarithmic
+    graph.HasLegend = False
+
+    graph.HasTitle = True
+    graph.ChartTitle.Text = sheet.Name
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
