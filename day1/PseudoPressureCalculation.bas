@@ -8,7 +8,7 @@ Public Function PseudoPressure(ByVal p As Double, ByVal pBase As Double) _
     PseudoPressure = 2 * TrapezoidalRule(pBase, p)
 End Function
 
-Private Function Integrand(ByVal p As Double)
+Private Function Integrand(ByVal p As Double) As Double
     Integrand = p / (Viscosity * Z)
 End Function
 
