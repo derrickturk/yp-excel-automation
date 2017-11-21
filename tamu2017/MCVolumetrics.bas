@@ -108,7 +108,7 @@ Private Function MonteCarloRealization(ByRef params As DistParams) _
     result.Height = BoundedRandUniform( _
       params.MinHeight, params.MaxHeight)
 
-    result.Porosity = BoundedRandNormal( _
+    result.Porosity = RandNormal( _
       params.MeanPorosity, params.SDPorosity)
     If result.Porosity < 0 Then
         result.Porosity = 0
@@ -129,7 +129,7 @@ End Function
 '   a normally distributed value using the Box-Muller transform;
 '   we're not going to use the second value we could generate
 '   for simplicity's sake
-Private Function BoundedRandNormal(ByVal mean As Double, _
+Private Function RandNormal(ByVal mean As Double, _
   ByVal sd As Double) As Double
     Dim u1 As Double
     Dim u2 As Double
@@ -144,7 +144,7 @@ Private Function BoundedRandNormal(ByVal mean As Double, _
     '   if we don't scale by sd and shift by mean,
     '   we just have a draw from the standard normal distribution
     '   ~ N (0, 1)
-    BoundedRandNormal = mean + sd * r * Cos(theta)
+    RandNormal = mean + sd * r * Cos(theta)
 End Function
 
 Private Function BoundedRandUniform(ByVal lower As Double, _
